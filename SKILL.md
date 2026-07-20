@@ -1,6 +1,6 @@
 ---
 name: cross-ai-review
-description: Independently review non-engineering work with a second AI chat. Use when asked to fact-check, critique, improve, or stress-test an article, proposal, project review, strategy, plan, or ideation output; when the user mentions cross-AI or cross-model review; or when a draft needs a second perspective before sharing.
+description: Independently review non-engineering work with a second AI chat or an optional authenticated model CLI. Use when asked to fact-check, critique, improve, or stress-test an article, proposal, project review, strategy, plan, or ideation output; when the user mentions cross-AI or cross-model review; or when a draft needs a second perspective before sharing.
 ---
 
 # Cross-AI Review
@@ -9,12 +9,23 @@ description: Independently review non-engineering work with a second AI chat. Us
 
 Use one AI chat as the author and a separate, fresh AI chat as the reviewer. This workflow helps expose blind spots, unclear reasoning, and unsupported claims. It does not guarantee accuracy, eliminate hallucinations, or replace expert review.
 
+## Choose the handoff method
+
+Ask the user to choose before preparing the review packet:
+
+1. **Manual handoff (default)** — copy the packet into a separate, fresh AI chat and return its response here.
+2. **CLI relay (advanced)** — pass the packet to an installed, authenticated CLI for another model. Use only when the user has active access to both services and explicitly consents to the transfer and any required installation or sign-in.
+
+For the CLI relay, ask which pairing to use: `Claude executor → Codex reviewer` or `Codex executor → Claude reviewer`. If the user does not choose, use manual handoff.
+
 ## Workflow
 
 1. Identify the review mode: `article`, `proposal`, `project-review`, or `ideation`. Ask for the audience, intended decision, relevant constraints, and what must not change.
 2. Before sharing content with a second AI, warn the user that it will leave the current chat. Call out confidential business information, personal data, credentials, unpublished material, and client details. Let the user decide whether to redact or proceed.
 3. Create a self-contained review packet using the applicable template in [references/review-templates.md](references/review-templates.md). Preserve uncertainty; do not fill gaps with assumptions.
-4. Ask the user to paste the packet into a separate AI chat. Encourage a different provider or model when available, but do not claim independence if the underlying model is unknown.
+4. Complete the selected handoff:
+   - **Manual:** ask the user to paste the packet into a separate AI chat. Encourage a different provider or model when available, but do not claim independence if the underlying model is unknown.
+   - **CLI relay:** follow [references/cli-relay.md](references/cli-relay.md). Send only the review packet to the reviewer CLI; keep the executor's working context and unrelated files out of the handoff.
 5. Incorporate the review: fix clear errors, preserve intentional choices, and ask the user to decide unresolved tradeoffs. Repeat the handoff once for material changes or high-impact claims.
 6. Return the final artifact with a short change summary and any remaining risks or questions.
 
