@@ -8,7 +8,7 @@ Use a fresh reviewer chat and paste one complete packet. Replace bracketed text;
 # Independent AI review request
 
 ## Mode
-[article | proposal | project-review | ideation]
+[article | proposal | project-review | ideation | code-review]
 
 ## Purpose and audience
 [Who will use this, and what should they decide, learn, or do?]
@@ -47,6 +47,12 @@ Add: `Check user value, originality, assumptions, constraints, likely failure mo
 
 Do not falsely fact-check speculative ideas. Classify evidence only for factual premises; keep creative judgement separate.
 
+## Code-review mode
+
+Add: `Check correctness, security, privacy and data handling, performance, error handling, maintainability, tests, compatibility, and unintended behavior changes. Identify issues by priority and include a concise reproduction or reasoning path when possible.`
+
+Do not claim a test passed unless the reviewer actually ran it and reports the result. Keep code review within the eight-round limit; all other modes use a five-round limit.
+
 ## Evidence-status table
 
 Use this format for material factual claims:
@@ -62,3 +68,4 @@ Use this format for material factual claims:
 - Remove fabricated citations, precise figures without support, and claims that exceed the evidence.
 - Retain the author's intended audience, tone, and scope.
 - List remaining questions and high-stakes decisions for a human owner.
+- Stop at five review rounds for non-code work or eight rounds for code review; ask the user before starting another loop.

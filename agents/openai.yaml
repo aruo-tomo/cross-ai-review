@@ -1,4 +1,4 @@
 interface:
   display_name: "Cross-AI Review"
-  short_description: "Independent AI review for knowledge work"
-  default_prompt: "Use $cross-ai-review to independently review this draft before I share it."
+  short_description: "Independent AI review for work and code"
+  default_prompt: "Use $cross-ai-review to independently review this draft or code change before I share it."
